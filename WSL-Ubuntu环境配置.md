@@ -57,30 +57,40 @@
 
     参考https://github.com/JingruiLea/CppProjectTemplate用例
 
+## 官网获取Opencpn
 
--获取Opencpn
     //github.com/OpenCPN/OpenCPN.git
-    用unzip或tar-zxvf来解压源文件压缩包
-    进入文件夹
+- 用unzip或tar-zxvf来解压源文件压缩包
+    ```
+    #进入文件夹
     cd OpenCPN
     mkdir build
     cd build
     cmake ../
     make
-    waiting....20~30分钟
--安装插件等
-    sudo make install
+    
+   ```
+   waiting....20~30分钟
+- 安装插件等
+    `sudo make install`
 ##注意
    默认安装目录为/ usr / local，您可以通过提供适当的cmake选项来更改此目录：
-   cmake -DCMAKE_INSTALL_PREFIX = / usr ../
-（附）
-    win10子系统打开opencpn闪退问题：
-    开放图形库问题
-    搜索void OCPNPlatform::Initialize_3( void )找到该函数文件   //opencpn平台文件
-    修改
+   
+  ` cmake -DCMAKE_INSTALL_PREFIX = / usr ../`
+## （附）
+  ```
+    #win10子系统打开opencpn闪退问题：
+    
+    #开放图形库问题
+    
+    #搜索`void OCPNPlatform::Initialize_3( void )`找到该函数文件   //opencpn平台文件
+    
+    #修改
+    
     //bool bcapable = IsGLCapable();
     bool bcapable = false;
-    保存编译即可。
+    #保存编译即可。
+  ``` 
    
 ## 遗留问题
 

@@ -71,9 +71,11 @@
     
    ```
    waiting....20~30分钟
-- 安装插件等
+   
+- 安装插件：
     `sudo make install`
-##注意
+##  注意
+
    默认安装目录为/ usr / local，您可以通过提供适当的cmake选项来更改此目录：
    
   ` cmake -DCMAKE_INSTALL_PREFIX = / usr ../`

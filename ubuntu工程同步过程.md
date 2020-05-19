@@ -23,8 +23,11 @@
  点Create a new repo可以看见提示了
   
 ## 3.配置本地用户和邮箱
- ```git config - -global user.name "reber-9"
- git config - -global user.email "123456@qq.com"
+ ```
+  git config --global user.name "reber-9"
+ 
+  git config --global user.email "123456@qq.com"
+  
  ```
 ## 4.按提示关联+同步
 ```

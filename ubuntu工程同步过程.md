@@ -44,7 +44,7 @@
  git commit -m "first commit"
 
  #完成后增加远程服务器别名：
- git remote add origin https://github.com/xxx/xxx.git     //https这一部分就是网页工程主页的链接复制过    来
+ git remote add origin https://github.com/xxx/xxx.git     //https这一部分就是网页工程主页的链接复制过来
  
                               //origin远程库名
  

@@ -3,7 +3,7 @@
  `sudo apt-get install git` 
 ##  2.生成密钥，将密钥添加到github
  ```
- cd
+ cd ~
  ssh-keygen -t rsa -C "123456@qq.com"     //填自己邮箱，最好用github的注册邮箱
  cd ~/.ssh/
  vim id_rsa.pub     //i一下复制

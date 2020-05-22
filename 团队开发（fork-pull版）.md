@@ -1,4 +1,6 @@
-# 1、拉团队（不用别人的SSH KEY）
+# 1、拉团队
+
+不需要成员的SSH KEY
 
 # 2、github创建开发分支
 
@@ -48,7 +50,9 @@ git fetch upstream   ##获取最新版本项目
 git merge upstream/dev    ##讲缘分支dev合并到当前分支
 ```
 
-# 6、push修改至自己的仓库
+# 6、提交commit并push修改至自己的仓库
+
+`git commit -m "... "             ##提交到本地库`
 
 `git push       ##在当前分支用push会Push到与这个分支相关联的远程分支。`
 

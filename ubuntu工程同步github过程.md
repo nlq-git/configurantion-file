@@ -75,3 +75,32 @@
  -克隆
  `git clone git@github.com:用户名/工程名.git`
  
+ 
+# 团队开发（仓库连接版）
+
+## 确定项目拥有者，让他建立一个github组织，邀请所有成员。
+
+-成员在自己电脑中生成一个ssh key，每个人的都发送给拥有者，拥有者添加密钥（！队友不能在github使用这个密钥）
+-所有人连接这个仓库
+-成员现在本地clone我的项目
+
+`git clone https://github.com/nlq-git/ship-collision-prevention      ##(我的为例)`
+
+-初始化
+`git init`
+
+-将本地仓库与远程仓库连接起来
+`git remote add https://github.com/nlq-git/ship-collision-prevention`
+`git remote -v               ##可查看连接上的仓库`
+
+-可以添加上传文件  
+`git add.            ##.是所有文件，可具体文件名，如下：`
+`git   add  html/test.html`
+
+-本地提交 
+`git commit -m "一般是第几次提交或版本号" `
+`git pull  ##可加仓库地址，查看本地仓库是否更新为最新的，不成功可能没连接上仓库`
+
+-推送
+git push （可加仓库地址）
+

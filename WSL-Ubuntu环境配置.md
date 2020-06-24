@@ -4,16 +4,18 @@
 
 - 备份官方源source.list
 
+    `sudo  cp   /etc/apt/sources.list   /etc/apt/sources.list.bak`   ##虚拟机路径
     `sudo cp /etc/tmp/source.list /etc/tmp/source.list.backup`
 
 - 替换`source.list`内容
 
     ```
-    sudo vi /etc/tmp/source.list
+    sudo  vim  /etc/apt/sources.list   #虚拟机路径
+    sudo vim /etc/tmp/source.list
     # 在vi中将原内容删除esc+dG，然后将清华源内容复制到文本中
     # 保存后，执行以下内容
     sudo apt update
-    sudo apt list -upgradable
+    sudo apt list --upgradable
     sudo apt upgrade
     # 等待一段时间后更新完成
     ```

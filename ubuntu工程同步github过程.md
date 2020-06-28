@@ -75,6 +75,11 @@
  -克隆
  `git clone git@github.com:用户名/工程名.git`
  
+ 如果报错does not match target host name 'github.com'
+ 
+ 执行 `git config --global http.sslVerify false`
+
+ 
  
 # 团队开发（仓库连接版）
 

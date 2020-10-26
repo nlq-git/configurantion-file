@@ -33,7 +33,7 @@
         deb http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
         deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
     sudo apt-get update
-    sudo apt-get uograde
+    sudo apt-get upgrade
     ```
 
 - 清华源

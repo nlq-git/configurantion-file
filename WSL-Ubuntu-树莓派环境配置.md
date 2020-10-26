@@ -27,11 +27,16 @@
 - 树莓派替换
     ```
     sudo vim /etc/apt/sources.list
-        deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
-        deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+        # deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
+        # Uncomment line below then 'apt-get update' to enable 'apt-get source'
+        # deb-src http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
+        deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+        deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+
     sudo nano /etc/apt/sources.list.d/raspi.list
-        deb http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
-        deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+        deb http://archive.raspberrypi.org/debian/ buster main
+        # Uncomment line below then 'apt-get update' to enable 'apt-get source'
+        #deb-src http://archive.raspberrypi.org/debian/ buster main
     sudo apt-get update
     sudo apt-get upgrade
     ```

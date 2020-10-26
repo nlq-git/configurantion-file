@@ -302,48 +302,6 @@
     `sudo apt install libwxgtk-webview3.0-dev`
     `sudo apt-get install build-essential cmake gettext git-core gpsd gpsd-clients libgps-dev wx-common libwxgtk3.0-dev libglu1-mesa-dev libgtk2.0-dev wx3.0-headers libbz2-dev libtinyxml-dev libportaudio2 portaudio19-dev libcurl4-openssl-dev libexpat1-dev libcairo2-dev libarchive-dev liblzma-dev libexif-dev libelf-dev libsqlite3-dev`   (opencpn)
 
-②安装wxWidgets3.1.2[codelite](https://wiki.codelite.org/pmwiki.php/Main/WxWidgets312Binaries)
-
-```bash
-# 这些软件包都使用CodeLite公钥签名，应通过以超级用户身份（取决于您的发行版为su或sudo）来告知apt：
-sudo apt-key adv --fetch-keys http://repos.codelite.org/CodeLite.asc
-# 将url添加到/etc/apt/sources.list
-sudo apt-add-repository 'deb http://repos.codelite.org/wx3.1.2/ubuntu/ eoan universe'
-sudo apt update
-# GTK+2
-sudo apt-get install libwxbase3.1-0-unofficial \
-                 libwxbase3.1-dev \
-                 libwxgtk3.1-0-unofficial \
-                 libwxgtk3.1-dev \
-                 wx3.1-headers \
-                 wx-common \
-                 libwxgtk-webview3.1-0-unofficial \
-                 libwxgtk-webview3.1-dev \
-                 libwxgtk-media3.1-0-unofficial \
-                 libwxgtk-media3.1-dev \
-                 libwxbase3.1-0-unofficial-dbg \
-                 libwxgtk3.1-0-unofficial-dbg \
-                 libwxgtk-webview3.1-0-unofficial-dbg \
-                 libwxgtk-media3.1-0-unofficial-dbg \
-                 wx3.1-i18n \
-                 wx3.1-examples
-# GTK+3
-sudo apt-get remove libwxbase3.1-0-unofficial3 \
-                 libwxbase3.1unofficial3-dev \
-                 libwxgtk3.1-0-unofficial3 \
-                 libwxgtk3.1unofficial3-dev \
-                 wx3.1-headers \
-                 wx-common \
-                 libwxgtk-media3.1-0-unofficial3 \
-                 libwxgtk-webview3.1-0-unofficial3 \
-                 libwxgtk-webview3.1unofficial3-dev \
-                 libwxbase3.1-0-unofficial3-dbg \
-                 libwxgtk3.1-0-unofficial3-dbg \
-                 libwxgtk-webview3.1-0-unofficial3-dbg \
-                 libwxgtk-media3.1-0-unofficial3-dbg \
-                 wx3.1-i18n \
-                 wx3.1-examples
-```
 
 ③**vcpkg**
 

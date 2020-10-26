@@ -118,9 +118,130 @@
 
     需要将wxWidgets编译安装，并做到第三方引用。
 
+## 2.第三方库加载-wxWidgets
+
+### wxWidgets安装
+
+有两种选择
+
+①安装wxWidgets3.0.1[csdn](https://blog.csdn.net/qq_32768743/article/details/83220719)或者[opencpn](https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:developer_manual:developer_guide:compiling_linux)
+
+    `sudo apt install libwxgtk3.0-dev`  (csdn)
+    `sudo apt install libwxgtk-webview3.0-dev`
+    `sudo apt-get install build-essential cmake gettext git-core gpsd gpsd-clients libgps-dev wx-common libwxgtk3.0-dev libglu1-mesa-dev libgtk2.0-dev wx3.0-headers libbz2-dev libtinyxml-dev libportaudio2 portaudio19-dev libcurl4-openssl-dev libexpat1-dev libcairo2-dev libarchive-dev liblzma-dev libexif-dev libelf-dev libsqlite3-dev`   (opencpn)
+
+
+③**vcpkg**
+
+## 3.第三方库-boost
+
+### 安装
+
+```bash
+sudo apt-cache search boost
+sudo apt-get install libboost-all-dev
+```
+
+### CMakeLists.txt中配置
+
+```cmake
+# 利用cmake添加boost库
+....
+find_package(Boost REQUIRED COMPONENTS system filesystem)
+if(NOT Boost_FOUND)
+    message("Not found Boost")
+endif()
+message("${Boost_INCLUDE_DIRS}")
+message("${Boost_LIBRARIES}")
+...
+# 需要添加-lboost_system避免报错
+target_link_libraries(chess -lboost_system ${Boost_LIBRARIES})
+```
+
+### 测试用例一boostTest.h和boostTest.cpp
+
+```c++
+#pragma once
+#include <boost/filesystem/path.hpp> 
+#include <boost/filesystem/operations.hpp>
+#include <string>
+std::string newPrint(std::string str);
+class Test
+{
+public:
+    Test(){};
+    ~Test(){};
+    inline std::string testBack(){
+        chessPath = boost::filesystem::initial_path<boost::filesystem::path>().string();
+        return chessPath;
+    }
+private:
+    std::string chessPath;
+```
+
+```c++
+#include "boostTest.h"
+std::string newPrint(std::string str)
+{
+    return str;
+}
+```
+
+## 遗留问题：
+
+    多线程相关知识
+
+    wxwidgets在vscode中的使用问题 [wxWidgets and VSCode](http://wxwidgets.10942.n7.nabble.com/wxWidgets-and-VSCode-td93506.html)
+
+
+
+### openCPN官网方法 可行
+
+```
+sudo apt-get install build-essential cmake gettext git-core gpsd gpsd-clients libgps-dev wx-common libwxgtk3.0-dev libglu1-mesa-dev libgtk2.0-dev wx3.0-headers libbz2-dev libtinyxml-dev libportaudio2 portaudio19-dev libcurl4-openssl-dev libexpat1-dev libcairo2-dev libarchive-dev liblzma-dev libexif-dev libelf-dev libsqlite3-dev
+```
+
+- 配置cmakelists.txt和c_cpp_properties.json
+
+  ```cmake
+  find_package(wxWidgets COMPONENTS core base ..)
+  if(wxWidgets_FOUND)
+    include(${wxWidgets_USE_FILE})
+    # and for each of your dependent executable/library targets:
+    target_link_libraries(main ${wxWidgets_LIBRARIES})
+    message("${wxWidgets_INCLUDE_DIRS}")
+  endif()
+  ```
+
+  ```json
+  {
+      "configurations": [
+          {
+              "name": "Linux",
+              "includePath": [
+                  "${workspaceFolder}/**",
+                  "${vcpkgRoot}/x64-linux/include",
+                  "/usr/include/wx-3.0/",
+                  "/usr/lib/x86_64-linux-gnu/wx/include/gtk2-unicode-3.0"
+              ],
+              "defines": [],
+              "compilerPath": "/usr/bin/gcc",
+              "cStandard": "c11",
+              "cppStandard": "c++17",
+              "intelliSenseMode": "gcc-x64"
+          }
+      ],
+      "version": 4
+  }
+  ```
+
+    添加头文件测试\#include <wx/wx.h> 
+
+        wxString msg(wxT("ready!"));
+        
 # 使用 Visual Studio Code 搭建 C/C++ 开发和调试环境
 
-## 1.开发和调试环境配置
+## .开发和调试环境配置
 
 - 在Linux中安装gdb
 
@@ -305,124 +426,3 @@
     在代码中设置断点。
 
     执行 debug，程序便会在断点处中断
-
-## 2.第三方库加载-wxWidgets
-
-### wxWidgets安装
-
-有两种选择
-
-①安装wxWidgets3.0.1[csdn](https://blog.csdn.net/qq_32768743/article/details/83220719)或者[opencpn](https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:developer_manual:developer_guide:compiling_linux)
-
-    `sudo apt install libwxgtk3.0-dev`  (csdn)
-    `sudo apt install libwxgtk-webview3.0-dev`
-    `sudo apt-get install build-essential cmake gettext git-core gpsd gpsd-clients libgps-dev wx-common libwxgtk3.0-dev libglu1-mesa-dev libgtk2.0-dev wx3.0-headers libbz2-dev libtinyxml-dev libportaudio2 portaudio19-dev libcurl4-openssl-dev libexpat1-dev libcairo2-dev libarchive-dev liblzma-dev libexif-dev libelf-dev libsqlite3-dev`   (opencpn)
-
-
-③**vcpkg**
-
-## 3.第三方库-boost
-
-### 安装
-
-```bash
-sudo apt-cache search boost
-sudo apt-get install libboost-all-dev
-```
-
-### CMakeLists.txt中配置
-
-```cmake
-# 利用cmake添加boost库
-....
-find_package(Boost REQUIRED COMPONENTS system filesystem)
-if(NOT Boost_FOUND)
-    message("Not found Boost")
-endif()
-message("${Boost_INCLUDE_DIRS}")
-message("${Boost_LIBRARIES}")
-...
-# 需要添加-lboost_system避免报错
-target_link_libraries(chess -lboost_system ${Boost_LIBRARIES})
-```
-
-### 测试用例一boostTest.h和boostTest.cpp
-
-```c++
-#pragma once
-#include <boost/filesystem/path.hpp> 
-#include <boost/filesystem/operations.hpp>
-#include <string>
-std::string newPrint(std::string str);
-class Test
-{
-public:
-    Test(){};
-    ~Test(){};
-    inline std::string testBack(){
-        chessPath = boost::filesystem::initial_path<boost::filesystem::path>().string();
-        return chessPath;
-    }
-private:
-    std::string chessPath;
-```
-
-```c++
-#include "boostTest.h"
-std::string newPrint(std::string str)
-{
-    return str;
-}
-```
-
-## 遗留问题：
-
-    多线程相关知识
-
-    wxwidgets在vscode中的使用问题 [wxWidgets and VSCode](http://wxwidgets.10942.n7.nabble.com/wxWidgets-and-VSCode-td93506.html)
-
-
-
-### openCPN官网方法 可行
-
-```
-sudo apt-get install build-essential cmake gettext git-core gpsd gpsd-clients libgps-dev wx-common libwxgtk3.0-dev libglu1-mesa-dev libgtk2.0-dev wx3.0-headers libbz2-dev libtinyxml-dev libportaudio2 portaudio19-dev libcurl4-openssl-dev libexpat1-dev libcairo2-dev libarchive-dev liblzma-dev libexif-dev libelf-dev libsqlite3-dev
-```
-
-- 配置cmakelists.txt和c_cpp_properties.json
-
-  ```cmake
-  find_package(wxWidgets COMPONENTS core base ..)
-  if(wxWidgets_FOUND)
-    include(${wxWidgets_USE_FILE})
-    # and for each of your dependent executable/library targets:
-    target_link_libraries(main ${wxWidgets_LIBRARIES})
-    message("${wxWidgets_INCLUDE_DIRS}")
-  endif()
-  ```
-
-  ```json
-  {
-      "configurations": [
-          {
-              "name": "Linux",
-              "includePath": [
-                  "${workspaceFolder}/**",
-                  "${vcpkgRoot}/x64-linux/include",
-                  "/usr/include/wx-3.0/",
-                  "/usr/lib/x86_64-linux-gnu/wx/include/gtk2-unicode-3.0"
-              ],
-              "defines": [],
-              "compilerPath": "/usr/bin/gcc",
-              "cStandard": "c11",
-              "cppStandard": "c++17",
-              "intelliSenseMode": "gcc-x64"
-          }
-      ],
-      "version": 4
-  }
-  ```
-
-    添加头文件测试\#include <wx/wx.h> 
-
-        wxString msg(wxT("ready!"));

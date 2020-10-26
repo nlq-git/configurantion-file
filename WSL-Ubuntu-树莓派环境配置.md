@@ -6,6 +6,11 @@
 
     `sudo  cp   /etc/apt/sources.list   /etc/apt/sources.list.bak`   ##虚拟机路径
     `sudo cp /etc/tmp/source.list /etc/tmp/source.list.backup`
+- 备份树莓派源source.lis
+    ```
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    sudo cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak
+    ```
 
 - 替换`source.list`内容
 
@@ -18,6 +23,17 @@
     sudo apt list --upgradable
     sudo apt upgrade
     # 等待一段时间后更新完成
+    ```
+- 树莓派替换
+    ```
+    sudo vim /etc/apt/sources.list
+        deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+        deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+    sudo nano /etc/apt/sources.list.d/raspi.list
+        deb http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+        deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+    sudo apt-get update
+    sudo apt-get uograde
     ```
 
 - 清华源
@@ -365,17 +381,11 @@ std::string newPrint(std::string str)
 
     wxwidgets在vscode中的使用问题 [wxWidgets and VSCode](http://wxwidgets.10942.n7.nabble.com/wxWidgets-and-VSCode-td93506.html)
 
-## 安装wxWidgets
 
-### 1 配置vcpkg来安装 不可行
 
-失败！！！！！
+### openCPN官网方法 可行
 
-遗憾的一天 玩了一下午游戏
-
-### 2 根据openCPN中的方法 可行
-
-```bash
+```
 sudo apt-get install build-essential cmake gettext git-core gpsd gpsd-clients libgps-dev wx-common libwxgtk3.0-dev libglu1-mesa-dev libgtk2.0-dev wx3.0-headers libbz2-dev libtinyxml-dev libportaudio2 portaudio19-dev libcurl4-openssl-dev libexpat1-dev libcairo2-dev libarchive-dev liblzma-dev libexif-dev libelf-dev libsqlite3-dev
 ```
 

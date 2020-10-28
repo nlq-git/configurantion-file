@@ -33,14 +33,35 @@
         deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
         deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
 
-    sudo nano /etc/apt/sources.list.d/raspi.list
-        deb http://archive.raspberrypi.org/debian/ buster main
-        # Uncomment line below then 'apt-get update' to enable 'apt-get source'
-        #deb-src http://archive.raspberrypi.org/debian/ buster main
+    sudo vim /etc/apt/sources.list.d/raspi.list
+        deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+        deb-src http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
     sudo apt-get update
     sudo apt-get upgrade                //可不执行
     ```
-
+    -更换pip源
+    ```
+    mkdir ~/.pip
+    vim ~/.pip/pip.conf
+    
+    内容：
+    [global]
+    timeout =6000
+    index-url =http://pypi.douban.com/simple/
+    [install]
+    use-mirrors =true 
+    mirrors =http://pypi.douban.com/simple/ 
+    trusted-host =pypi.douban.com
+    
+    国内源列表
+    阿里云 http://mirrors.aliyun.com/pypi/simple/
+    中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+    豆瓣 http://pypi.douban.com/simple
+    Python官方 https://pypi.python.org/simple/
+    v2ex http://pypi.v2ex.com/simple/
+    中国科学院 http://pypi.mirrors.opencas.cn/simple/
+    清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+    ```
 - 清华源
 
     ```

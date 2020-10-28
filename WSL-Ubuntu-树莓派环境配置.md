@@ -21,7 +21,7 @@
     # 保存后，执行以下内容
     sudo apt update
     sudo apt list --upgradable
-    sudo apt upgrade
+    sudo apt upgrade                //更新系统内全部最新版软件
     # 等待一段时间后更新完成
     ```
 - 树莓派替换
@@ -38,7 +38,7 @@
         # Uncomment line below then 'apt-get update' to enable 'apt-get source'
         #deb-src http://archive.raspberrypi.org/debian/ buster main
     sudo apt-get update
-    sudo apt-get upgrade
+    sudo apt-get upgrade                //可不执行
     ```
 
 - 清华源

@@ -77,3 +77,16 @@ git merge upstream/dev    ##讲缘分支dev合并到当前分支
 如果没有问题，可以点击Merge pull request。这样就合并好了
 
 
+```
+如果要同步原始项目，只要执行
+git pull git@github.com:devA/foobar.git master
+就可以了，为了不每次都输入完整的地址，可以用 add remote 命令来记录一个快捷方式
+git remote add source git@github.com:devA/foobar.git
+这里 source 就是你为原始 remote 地址取的名字。之后就可以拉取原始项目更新：
+git pull source master
+拉取自己 fork 项目的更新：
+git pull origin master
+
+```
+
+

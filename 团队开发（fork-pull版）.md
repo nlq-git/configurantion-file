@@ -39,13 +39,13 @@ git checkout master     ##切回主支
 ```
 git remote -v    ##查看upstream
 
-如果没有显示upstream，则使用
+如果没有显示项目链接，则使用
 
-git remote add upstream 团队项目地址
+git remote add 远程远程名 + 项目地址
 
-再次使用git remote -v，出现了upstream远程库连接就设置好了
+再次使用git remote -v，出现了远程库连接就设置好了
 
-git fetch upstream   ##获取最新版本项目
+git fetch 远程项目名   ##获取最新版本项目
 
 git merge upstream/dev    ##讲缘分支dev合并到当前分支
 ```

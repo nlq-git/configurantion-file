@@ -23,6 +23,20 @@
    sudo nano  /etc/rc.local
    sudo vncserver
    ```
+   
+  ```
+  在 /etc/init.d 目录下谢一个脚本vncserver，内容如下：
+  #!/bin/bash
+  vncserver :1
+  sudo chmod 755 /etc/init.d/vncserver
+
+  然后执行：
+  update-rc.d vnc.sh defaults
+  ```
+
+
+
+
 ## 6、改变分辨率
   查看目录
   

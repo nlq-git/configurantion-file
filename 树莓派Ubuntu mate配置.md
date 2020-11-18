@@ -24,6 +24,16 @@
   x11vnc -display :0 -auth /var/run/lightdm/root/:0 -forever -bg -o /var/log/x11vnc.log -rfbauth /etc/x11vnc.pass -rfbport 5900 
   end script 
   ```
-  
+# SSH连接
+##打开SSH服务，打开端口
+`sudo raspi-config`
+`sudo apt-get install openssh-server`
+##开防火墙打开端口
+```
+sudo apt-get install ufw
+sudo ufw enable
+sudo ufw allow 22         //vnc是5900、5901等
+```
+
   
 

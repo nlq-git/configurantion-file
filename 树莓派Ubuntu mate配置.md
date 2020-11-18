@@ -26,6 +26,7 @@
   ```
 # SSH连接
 ##打开SSH服务，打开端口
+
 `sudo raspi-config`
 
 `sudo apt-get install openssh-server`
@@ -36,6 +37,7 @@ sudo ufw enable
 sudo ufw allow 22         //vnc是5900、5901等
 ```
 ##配置SSH文档
+
 `sudo vim /etc/ssh/sshd_config`
 
 `sudo service ssh restart`

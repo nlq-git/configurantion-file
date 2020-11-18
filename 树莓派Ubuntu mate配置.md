@@ -27,6 +27,7 @@
 # SSH连接
 ##打开SSH服务，打开端口
 `sudo raspi-config`
+
 `sudo apt-get install openssh-server`
 ##开防火墙打开端口
 ```

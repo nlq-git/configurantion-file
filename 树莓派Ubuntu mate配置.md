@@ -35,6 +35,8 @@ sudo apt-get install ufw
 sudo ufw enable
 sudo ufw allow 22         //vnc是5900、5901等
 ```
+##配置SSH文档
+`sudo vim /etc/ssh/sshd_config`
 
   
 

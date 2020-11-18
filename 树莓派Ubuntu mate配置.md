@@ -12,9 +12,12 @@
 ## 4、编辑 /home/.vnc/xstartup 设置VNC要显示图形界面
 
   `sudo vim  /home/.vnc/xstartup`
+
   添加
+  
   `mate-session & mate-panel &`
 ## 5、设置vncserver开机自启
+
 这样不用每次都vncserver，编辑 /etc/rc.local 在　exit 0 前添加以下内容
    ```
    sudo nano  /etc/rc.local
@@ -22,8 +25,11 @@
    ```
 ## 6、改变分辨率
   查看目录
+  
   `which vncserver`
+  
   显示/usr/bin/vncserver
+  
   `sudo vim /usr/bin/vnc4server`
   
 

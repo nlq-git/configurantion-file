@@ -1,29 +1,32 @@
 # Ubuntu mate配置
-- 1、安装x11vnc
+##1、安装vncserver
 
-  `sudo apt-get install x11vnc  `
-- 2、手动连接
+  `sudo apt-get -y install vnc4server`
+##2、启动
 
-  `sudo /usr/bin/x11vnc -display :0 -auth /var/run/lightdm/root/:0 -forever -bg -o /var/log/x11vnc.log -rfbauth /etc/x11vnc.pass -rfbport 5900 `
-- 3、开机自启
+  `vncserver`
 
- `sudo x11vnc -storepasswd `
-- 4、密码保存位置
+##3、设置密码
 
- `sudo x11vnc -storepasswd in /etc/x11vnc.pass`
-- 5、将用户目录下的password文件内容拷贝至/etc/x11vnc.pass下
+ `sudo vncpasswd`
+##4、编辑 /home/.vnc/xstartup 设置VNC要显示图形界面
 
-  `sudo cp /home/"user"/.vnc/passwd /etc/x11vnc.pass `
-- 6、配置x11跟随系统自启新建一个文件/etc/init/x11vnc.conf
+  `sudo vim  /home/.vnc/xstartup`
+  添加
+  `mate-session & mate-panel &`
+##5、设置vncserver开机自启
+这样不用每次都vncserver，编辑 /etc/rc.local 在　exit 0 前添加以下内容
+   ```
+   sudo nano  /etc/rc.local
+   sudo vncserver
+   ```
+##6、改变分辨率
+  查看目录
+  `which vncserver`
+  显示/usr/bin/vncserver
+  `sudo vim /usr/bin/vnc4server`
+  
 
-  `sudo touch /etc/init/x11vnc.conf`
-- 加入内容
-  ```
-  start on login-session-start 
-  script 
-  x11vnc -display :0 -auth /var/run/lightdm/root/:0 -forever -bg -o /var/log/x11vnc.log -rfbauth /etc/x11vnc.pass -rfbport 5900 
-  end script 
-  ```
 # SSH连接
 ##打开SSH服务，打开端口
 

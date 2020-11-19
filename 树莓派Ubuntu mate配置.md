@@ -39,6 +39,7 @@
   `crontab -e`
   选择vim.basic即可
   新起一行加入
+  
   `@reboot /usr/bin/vncserver :1`
   
   `sudo reboot`

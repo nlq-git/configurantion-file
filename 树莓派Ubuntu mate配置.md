@@ -33,7 +33,15 @@
   然后执行：
   update-rc.d vnc.sh defaults
   ```
+  (以上对树莓派3B无效)
+##   配置开机启动(定时任务法)
 
+  `crontab -e`
+  选择vim.basic即可
+  新起一行加入
+  `@reboot /usr/bin/vncserver :1`
+  
+  `sudo reboot`
 
 
 

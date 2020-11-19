@@ -20,7 +20,7 @@
 
 这样不用每次都vncserver，编辑 /etc/rc.local 在　exit 0 前添加以下内容
    ```
-   sudo nano  /etc/rc.local
+   sudo vim  /etc/rc.local
    sudo vncserver
    ```
    
